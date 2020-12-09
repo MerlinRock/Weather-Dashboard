@@ -1,0 +1,81 @@
+h1{
+    text-align: center;
+    background-color: rgb(68, 68, 68);
+    color: white;
+    margin: 0%;
+}
+.asideLeft {
+    padding-right: 15px;
+    padding-bottom: 25px;
+    float: left;
+    background-color: whitesmoke;
+}
+
+h4 {
+    margin-left: 16px;
+}
+
+.list-group {
+    margin-left: 16px;
+}
+
+.searchBtn {
+    color: dodgerblue
+}
+
+.navbar {
+    background-color: whitesmoke !important;
+}
+
+.forecastSection {
+    float: left;
+    padding-left: 15px;
+    background-color: white;
+    width: 1000px;
+    height: 600px;
+}
+.dayOfWeatherSection {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    padding-left: 15px;
+    background-color: white;
+    width:900px;
+    height: 350px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    border-radius: 4px;
+}
+
+.fiveDayForecastSection {
+    background-color: white;
+    width: 900px;
+    height: 250px;
+}
+
+.cityDateIcon {
+
+}
+
+.temperature {
+
+}
+
+.humidity {
+
+}
+
+.windSpeed {
+
+}
+
+.uvIndex {
+    
+}
+
+.card {
+    width: 150px;
+    height: 175px;
+    float: left;
+    margin-right: 30px;
+}

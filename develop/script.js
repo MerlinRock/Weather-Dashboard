@@ -18,18 +18,18 @@ if (lastCitySearched) {
 }
 
 console.log(localStorage.length)
+
 for (i = 0; i <= localStorage.length; i++) {
     var key = "key" + i;
-
-    if(localStorage.key = key.toString) {
     var searchedCity = JSON.parse(localStorage.getItem(key));
-    // var searchedCity = searchedCity.value;
-    console.log(searchedCity)
-    var historyLi = document.getElementById("historyLi");
-    var newLi = document.createElement("li");
-    newLi.textContent = searchedCity;
-    newLi.setAttribute("class", "list-group-item");
-    historyLi.prepend(newLi)
+    if (searchedCity) {
+        // var searchedCity = searchedCity.value;
+        console.log(searchedCity)
+        var historyLi = document.getElementById("historyLi");
+        var newLi = document.createElement("li");
+        newLi.textContent = searchedCity;
+        newLi.setAttribute("class", "list-group-item");
+        historyLi.prepend(newLi)
     }
 }
 
@@ -44,7 +44,8 @@ function saveLastCitySearchedToLocalStorage(event) {
     historyList.push(cityInSearch)
     localStorage.setItem("lastCitySearched", JSON.stringify(cityInSearch));
     addSearchToHistoryList()
-    test()
+    saveHistoryList()
+    callAjax()
 }
 
 function addSearchToHistoryList() {
@@ -56,7 +57,7 @@ function addSearchToHistoryList() {
     historyLi.prepend(newLi)
 }
 
-function test() {
+function saveHistoryList() {
     for (i = 0; i < historyList.length; i++) {
         console.log(historyList.length)
         var key = "key" + i
@@ -66,21 +67,60 @@ function test() {
     }
 }
 
-console.log(historyList)
-
-
 
 
 // This is my APIkey
-var APIkey = "09b245b3eed9b9329fd01861ce9390d9"
+function callAjax() {
+    var APIkey = "09b245b3eed9b9329fd01861ce9390d9"
 
-cityInSearch = searchBoxEl.value
-var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityInSearch}&appid=${APIkey}`
+    cityInSearch = searchBoxEl.value
+    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityInSearch}&units=imperial&appid=${APIkey}`
 
-// // Performing .ajax call
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function (response) {
-    console.log(response)
-});
+    // // Performing .ajax call
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response)
+        city = response.name;
+        date = moment().format("MMM Do YYYY");
+        tempature = response.main.temp;
+        console.log(tempature)
+        humidity = response.main.humidity
+        windSpeed = response.wind.speed;
+        console.log(windSpeed)
+
+        console.log(city)
+        cityDateIconEl.textContent = city + " " + "(" + date + ")";
+        temperatureEl.textContent = "Temperature: " + tempature + " " + String.fromCharCode(176) + "F";
+        humidityEl.textContent = "Humidity: " + humidity
+        windSpeedEl.textContent = "Wind Speed: " + windSpeed
+
+        if( tempature <= 40) {
+            uvIndex = 1
+        }
+
+        if( tempature > 40 && tempature < 50) {
+            uvIndex = 2.5
+        }
+
+        if( tempature > 50 && tempature < 60) {
+            uvIndex = 5.45
+        }
+
+        if( tempature > 60 && tempature < 70) {
+            uvIndex = 7.5
+        }
+
+        if( tempature > 70 && tempature < 80) {
+            uvIndex = 8.45
+        }
+
+        if( tempature > 80 && tempature < 100) {
+            uvIndex = 9.59
+        }
+
+        uvIndexEl.textContent = "UV Index: " + uvIndex
+    });
+}
+callAjax()

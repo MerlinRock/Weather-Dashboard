@@ -37,10 +37,9 @@ h4 {
 .dayOfWeatherSection {
     margin-top: 15px;
     margin-bottom: 5px;
-    padding-left: 15px;
     background-color: white;
     width:900px;
-    height: 350px;
+    height: 275px;
     border-style: solid;
     border-width: 1px;
     border-color: lightgray;
@@ -54,23 +53,30 @@ h4 {
 }
 
 .cityDateIcon {
-
+    list-style: none;
+    font-size: xx-large;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .temperature {
-
+    list-style: none;
+    margin-bottom: 15px;
 }
 
 .humidity {
-
+    list-style: none;
+    margin-bottom: 15px;
 }
 
 .windSpeed {
-
+    list-style: none;
+    margin-bottom: 15px;
 }
 
 .uvIndex {
-    
+    list-style: none;
 }
 
 .card {
